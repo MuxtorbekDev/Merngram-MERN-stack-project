@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "mern",
+  "description": "mongo, express, node, rest, api",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
