@@ -6,3 +6,5 @@
   MongoDB da new project ochamiz va mongoose orqali loyimizga MongoDB ni ulaymiz.
 - 3 qadam:
   user model va auth router yaratamiz va postman orqali test qilamiz
+- 4 qadam:
+  Ruyxatdan utishning backend qismini qildik. ma'lumotlarni olib MongoDbga joyladik. bcryptjs orqali passwordlarni hash qildik!.
