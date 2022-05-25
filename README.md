@@ -8,3 +8,5 @@
   user model va auth router yaratamiz va postman orqali test qilamiz
 - 4 qadam:
   Ruyxatdan utishning backend qismini qildik. ma'lumotlarni olib MongoDbga joyladik. bcryptjs orqali passwordlarni hash qildik!.
+- 5 qadam:
+  Kirish qismining backend qismini qildik. req.bodydan kelgan email va hash qilingan passwordni MongoDBdagi ma'lumotlar bilan taqqosladik
