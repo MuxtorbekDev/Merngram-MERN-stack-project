@@ -10,3 +10,5 @@
   Ruyxatdan utishning backend qismini qildik. ma'lumotlarni olib MongoDbga joyladik. bcryptjs orqali passwordlarni hash qildik!.
 - 5 qadam:
   Kirish qismining backend qismini qildik. req.bodydan kelgan email va hash qilingan passwordni MongoDBdagi ma'lumotlar bilan taqqosladik
+- 6 qadam:
+  JsonWebToken ni sozlaymiz va postman orqali test qilib ko'ramiz!.
