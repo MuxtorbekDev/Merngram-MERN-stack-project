@@ -14,3 +14,5 @@
   JsonWebToken ni sozlaymiz va postman orqali test qilib ko'ramiz!.
 - 7 qadam:
   Post model va post router ochdik. POstman orqali mongdbga data yuborib test qilib ko'rdik.
+- 8 qadam:
+  Postall router yaratib hamma postlarni chiqarivoldik, my post router yaratib bitta userga tegishli postlarni chiqarib oldik. va ikkita get surovni ham postmanda test qilib ko'rdik.
