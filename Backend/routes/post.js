@@ -4,6 +4,28 @@ const mongoose = require("mongoose");
 const login = require("../middleware/login");
 const Post = mongoose.model("Post");
 
+router.get("/allpost", (req, res) => {
+  Post.find()
+    .populate("postedBy", "_id", "name")
+    .then((posts) => {
+      res.json({ posts });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.get("/mypost", login, (req, res) => {
+  Post.find({ postedBy: req.user._id })
+    .populate("postedBy", "_id, name")
+    .then((myPosts) => {
+      res.json({ myPosts });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 router.post("/createpost", login, (req, res) => {
   const { title, body } = req.body;
   if (!title || !body) {
