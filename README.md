@@ -18,3 +18,5 @@
   Postall router yaratib hamma postlarni chiqarivoldik, my post router yaratib bitta userga tegishli postlarni chiqarib oldik. va ikkita get surovni ham postmanda test qilib ko'rdik.
 - 9 qadam:
   npx create-react-app Reactni va kerakli kutubxonalarni urnatamiz. Navbarni component qilibi react-router-dommni ham ishlatamiz.
+- 10 qadam:
+  Kirish va ruyxatdan utish pagelarni reactda qillamiz.

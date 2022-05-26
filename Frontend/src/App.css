@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
 nav.navBg {
   color: red;
+}
+
+.brand-logo {
+  font-family: 'Grand Hotel', cursive;
+}
+.mern-brend {
+  font-family: 'Grand Hotel', cursive;
+
+}
+.card__auth {
+  padding: 20px;
+  max-width: 400px;
+  text-align: center;
+  margin: 4rem  auto;
+}
+
+.card__auth p.text-sign {
+  font-weight: 600;
+  margin: 2rem 0;
 }
