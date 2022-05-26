@@ -16,3 +16,5 @@
   Post model va post router ochdik. POstman orqali mongdbga data yuborib test qilib ko'rdik.
 - 8 qadam:
   Postall router yaratib hamma postlarni chiqarivoldik, my post router yaratib bitta userga tegishli postlarni chiqarib oldik. va ikkita get surovni ham postmanda test qilib ko'rdik.
+- 9 qadam:
+  npx create-react-app Reactni va kerakli kutubxonalarni urnatamiz. Navbarni component qilibi react-router-dommni ham ishlatamiz.
