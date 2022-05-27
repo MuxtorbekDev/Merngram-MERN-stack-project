@@ -22,3 +22,5 @@
   Kirish va ruyxatdan utish pagelarni reactda qillamiz.
 - 11 qadam:
   Prifile ko'rinish qismini qilamiz!.
+- 12 qadam:
+  allposts Hamma postlar chiqish qismini qilamiz!.
