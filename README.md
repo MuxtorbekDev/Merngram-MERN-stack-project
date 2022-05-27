@@ -20,3 +20,5 @@
   npx create-react-app Reactni va kerakli kutubxonalarni urnatamiz. Navbarni component qilibi react-router-dommni ham ishlatamiz.
 - 10 qadam:
   Kirish va ruyxatdan utish pagelarni reactda qillamiz.
+- 11 qadam:
+  Prifile ko'rinish qismini qilamiz!.

@@ -4,6 +4,11 @@ nav.navBg {
   color: red;
 }
 
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
 .brand-logo {
   font-family: 'Grand Hotel', cursive;
 }
@@ -21,4 +26,32 @@ nav.navBg {
 .card__auth p.text-sign {
   font-weight: 600;
   margin: 2rem 0;
+}
+
+
+.profileMain {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto;
+  border-bottom: 1px solid #555;
+}
+.profileImg {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+.infoProfile {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.gallery .imgItem {
+  max-width: 32%;
+  margin-top: 10px;
 }

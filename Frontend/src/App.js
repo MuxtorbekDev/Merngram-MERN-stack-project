@@ -1,5 +1,6 @@
-import { Navbar } from "./components/Navbar";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
 import Home from "./screens/Home";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
@@ -11,12 +12,14 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/profile" component={Profile} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/profile" component={Profile} />
+        </Switch>
+      </div>
     </Router>
   );
 }
