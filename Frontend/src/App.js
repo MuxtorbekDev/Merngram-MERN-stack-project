@@ -7,6 +7,7 @@ import SignUp from "./screens/SignUp";
 import Profile from "./screens/Profile";
 import "../node_modules/materialize-css/dist/css/materialize.min.css";
 import "./App.css";
+import CreatePost from "./screens/CreatePost";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/profile" component={Profile} />
+          <Route path="/createpost" component={CreatePost} />
         </Switch>
       </div>
     </Router>

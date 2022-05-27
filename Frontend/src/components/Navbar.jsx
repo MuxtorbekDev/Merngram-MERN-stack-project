@@ -18,6 +18,9 @@ export const Navbar = () => {
           <li>
             <Link to="/profile">Mening Profilim</Link>
           </li>
+          <li>
+            <Link to="/createpost">Post Yaratish</Link>
+          </li>
         </ul>
       </div>
     </nav>

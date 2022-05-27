@@ -62,3 +62,15 @@ nav.navBg {
   padding: 5px;
   margin: 30px auto;
 }
+
+.postCard {
+  margin: 3rem auto;
+  max-width: 500px;
+  padding: 20px;
+  text-align: center;
+}
+
+.postCard  button.btn {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}

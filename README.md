@@ -24,3 +24,5 @@
   Prifile ko'rinish qismini qilamiz!.
 - 12 qadam:
   allposts Hamma postlar chiqish qismini qilamiz!.
+- 13 qadam:
+  Post yaratish input pageni qildik.
