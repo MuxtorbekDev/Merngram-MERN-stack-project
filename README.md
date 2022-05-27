@@ -25,4 +25,4 @@
 - 12 qadam:
   allposts Hamma postlar chiqish qismini qilamiz!.
 - 13 qadam:
-  Post yaratish input pageni qildik.
+  Post yaratish input pageni qildik va recat-router-dom@5.3.0 dan versiyasini react-router-dom@6.3.0 ga o'tqazdik xatosiz ishlay boshaldi
