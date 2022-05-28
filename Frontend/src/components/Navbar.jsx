@@ -13,9 +13,6 @@ export const Navbar = () => {
             <Link to="/signin">Kirish</Link>
           </li>
           <li>
-            <Link to="/signup">Ro'yhatdan o'tish</Link>
-          </li>
-          <li>
             <Link to="/profile">Mening Profilim</Link>
           </li>
           <li>

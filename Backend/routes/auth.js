@@ -6,22 +6,18 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../keys");
 const login = require("../middleware/login");
+const mdl = require("../middleware/mdl");
 
 router.get("/protected", login, (req, res) => {
   res.send("hello world");
 });
 
-router.post("/signup", (req, res) => {
+router.post("/signup", mdl, (req, res) => {
   const { name, email, password } = req.body;
-  if (!email || !password || !name) {
-    res.status(422).json({ error: "PLase add all the fields" });
-  }
 
   User.findOne({ email: email }).then((savedUser) => {
     if (savedUser) {
-      return res
-        .status(422)
-        .json({ error: "User already exists with this email" });
+      return res.status(422).json({ error: "Bu email ruyhatdan o'tgan!" });
     }
     bcrypt.hash(password, 12).then((hashedPassword) => {
       const user = new User({
@@ -33,7 +29,7 @@ router.post("/signup", (req, res) => {
       user
         .save()
         .then((user) => {
-          res.json({ msg: "added successfully" });
+          res.json({ msg: "Siz Muofiqiyatli Ruyhatdan O'tdingiz!" });
         })
         .catch((err) => {
           console.log(err);
