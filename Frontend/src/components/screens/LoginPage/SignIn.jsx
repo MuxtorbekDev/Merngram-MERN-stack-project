@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./css/style.css";
+import "../css/style.css";
 import M from "materialize-css";
-import Login from "./LoginPage/Login";
+import Login from "./Login";
 
 export default function SignIn() {
   const [regName, setRegName] = useState("");

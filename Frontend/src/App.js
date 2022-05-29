@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import "../node_modules/materialize-css/dist/css/materialize.min.css";
 import "./App.css";
-import SignIn from "./components/screens/SignIn";
+import SignIn from "./components/screens/LoginPage/SignIn";
 import Home from "./components/screens/Home";
 import Profile from "./components/screens/Profile";
 import CreatePost from "./components/screens/CreatePost";

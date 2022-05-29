@@ -1,11 +1,14 @@
 // import { useContext } from "react";
-// import { useHistory } from "react-router-dom";
+
+// import { createBrowserHistory } from "history";
+import { useNavigate } from "react-router-dom";
 // import { UserContext } from "../../../App";
 import M from "materialize-css";
 
 export default function Login(props) {
   // const { state, dispatch } = useContext(UserContext);
-  // const history = useHistory();
+  const nav = useNavigate();
+  // const history = createBrowserHistory()
   const {
     logEmail,
     logPassword,
@@ -28,7 +31,7 @@ export default function Login(props) {
       return;
     }
 
-    fetch("http://localhost:5000/signin", {
+    fetch("/signin", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -43,14 +46,15 @@ export default function Login(props) {
         if (data.error) {
           M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
         } else {
-          localStorage.setItem("jwt", data.token);
-          localStorage.setItem("user", JSON.stringify(data.user));
+          // localStorage.setItem("jwt", data.token);
+          // localStorage.setItem("user", JSON.stringify(data.user));
           // dispatch({ type: "USER", payload: data.user });
           M.toast({
             html: "Siz muvaffaqiyatli kirish qildingiz",
             classes: "#2e7d32 green darken-3",
           });
           // history.push("/");
+          nav("/");
         }
       });
   };

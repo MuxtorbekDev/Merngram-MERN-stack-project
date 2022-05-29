@@ -27,4 +27,6 @@
 - 13 qadam:
   Post yaratish input pageni qildik va recat-router-dom@5.3.0 dan versiyasini react-router-dom@6.3.0 ga o'tqazdik xatosiz ishlay boshaldi.
 - 14 qadam:
-  Ruyhatdan utish !
+  Ruyhatdan utish !.
+- 15 qadam:
+  Kirish va Xatolarni chiqarish!
