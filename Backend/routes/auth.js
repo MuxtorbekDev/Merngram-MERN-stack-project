@@ -42,12 +42,14 @@ router.post("/signin", (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(422).json({ error: "please add email or password" });
+    return res
+      .status(422)
+      .json({ error: "Iltimos parol va email manzilingiz kiriting!" });
   }
 
   User.findOne({ email: email }).then((savedUser) => {
     if (!savedUser) {
-      res.status(422).json({ error: "Invalid email" });
+      res.status(422).json({ error: "Emailingiz Xato!" });
     }
 
     bcrypt
@@ -59,7 +61,7 @@ router.post("/signin", (req, res) => {
           const { _id, name, email } = savedUser;
           res.json({ token: token, user: { _id, name, email } });
         } else {
-          return res.status(422).json({ error: "Invalid email or password" });
+          return res.status(422).json({ error: "Parolingiz  xato!" });
         }
       })
       .catch((err) => {
