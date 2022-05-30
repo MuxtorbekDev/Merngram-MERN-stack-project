@@ -29,4 +29,6 @@
 - 14 qadam:
   Ruyhatdan utish !.
 - 15 qadam:
-  Kirish va Xatolarni chiqarish!
+  Kirish va Xatolarni chiqarish!.
+- 16 qadam:
+  Post yozish pageni to'g'irlab olamiz!.

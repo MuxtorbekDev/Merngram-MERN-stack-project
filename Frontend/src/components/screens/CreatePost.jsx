@@ -8,12 +8,17 @@ function CreatePost() {
         <div className="input-field col s6">
           <i class="material-icons prefix">title</i>
           <input id="title" type="text" className="validate" />
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Sarlavha</label>
         </div>
         <div className="input-field col s6">
           <i class="material-icons prefix">description</i>
-          <input id="body" type="text" className="validate" />
-          <label htmlFor="body">Body</label>
+          <textarea
+            id="textarea1"
+            className="materialize-textarea"
+            defaultValue={""}
+            rows="4"
+          />
+          <label htmlFor="textarea1">Maqola matni</label>
         </div>
       </div>
 
