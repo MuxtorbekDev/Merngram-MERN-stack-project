@@ -34,3 +34,5 @@
   Post yozish pageni to'g'irlab olamiz!.
 - 17 qadam:
   Rasmni cloudga joylash va frontedn orqali postlarni mongodbga yuklash.
+- 18 qadam:
+  Reducer file yaratamiz va context yozamiz!

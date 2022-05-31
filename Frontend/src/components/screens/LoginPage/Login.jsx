@@ -1,14 +1,11 @@
-// import { useContext } from "react";
-
-// import { createBrowserHistory } from "history";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import { UserContext } from "../../../App";
+import { UserContext } from "../../../App";
 import M from "materialize-css";
 
 export default function Login(props) {
-  // const { state, dispatch } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
   const nav = useNavigate();
-  // const history = createBrowserHistory()
   const {
     logEmail,
     logPassword,
@@ -48,7 +45,7 @@ export default function Login(props) {
         } else {
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
-          // dispatch({ type: "USER", payload: data.user });
+          dispatch({ type: "USER", payload: data.user });
           M.toast({
             html: "Siz muvaffaqiyatli kirish qildingiz",
             classes: "#2e7d32 green darken-3",

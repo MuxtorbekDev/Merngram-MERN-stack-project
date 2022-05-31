@@ -36,6 +36,8 @@ function CreatePost() {
           }
         });
     }
+
+    // eslint-disable-next-line
   }, [url]);
 
   const postDetails = () => {
