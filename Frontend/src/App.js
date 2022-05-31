@@ -19,6 +19,7 @@ export const UserContext = createContext();
 
 const Routing = () => {
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const Routing = () => {
 
     // eslint-disable-next-line
   }, []);
+
   return (
     <div className="container">
       <Routes>
