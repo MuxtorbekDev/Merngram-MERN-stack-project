@@ -46,8 +46,8 @@ export default function Login(props) {
         if (data.error) {
           M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
         } else {
-          // localStorage.setItem("jwt", data.token);
-          // localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("jwt", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
           // dispatch({ type: "USER", payload: data.user });
           M.toast({
             html: "Siz muvaffaqiyatli kirish qildingiz",

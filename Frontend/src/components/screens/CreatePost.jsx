@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import M from "materialize-css";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,35 @@ function CreatePost() {
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    if (url) {
+      fetch("/createpost", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Muxtor " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          title,
+          body,
+          pic: url,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
+          } else {
+            M.toast({
+              html: "Siz muvaffaqiyatli maqola qo'shdingiz!",
+              classes: "#2e7d32 green darken-3",
+            });
+            navigate("/");
+          }
+        });
+    }
+  }, [url]);
 
   const postDetails = () => {
     const data = new FormData();
@@ -20,32 +49,10 @@ function CreatePost() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setUrl(data.url);
       })
       .catch((err) => {
         console.log(err);
-      });
-
-    fetch("/createpost", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title,
-        body,
-        pic: url,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
-        } else {
-          M.toast({ html: data.msg, classes: "#2e7d32 green darken-3" });
-          navigate("/");
-        }
       });
   };
 

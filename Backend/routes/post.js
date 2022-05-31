@@ -35,7 +35,7 @@ router.post("/createpost", login, (req, res) => {
   const post = new Post({
     title,
     body,
-    pic,
+    photo: pic,
     postedBy: req.user,
   });
 
