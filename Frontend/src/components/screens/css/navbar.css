@@ -1,0 +1,34 @@
+.navbar {
+  width: 100%;
+  background-color: #888;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+}
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 0rem;
+  height: 100%;
+  width: 85%;
+  margin: 0 auto;
+}
+.navbar a {
+  color: #fff;
+}
+.navbar ul li {
+  display: inline;
+  padding: 0 5px;
+}
+
+h2.brand-logo {
+  line-height: 0;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
