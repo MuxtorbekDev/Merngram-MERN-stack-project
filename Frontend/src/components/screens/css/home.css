@@ -1,3 +1,17 @@
+#home .homePage {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+#home .homePage2 {
+  width: 30%;
+}
+#home .homepage .allPost {
+  width: 65%;
+  align-content: center;
+}
+
 #home .card {
   background-color: #fff;
   min-width: 350px;
@@ -5,6 +19,8 @@
   height: auto;
   border: 1px solid #e6e6e6;
 }
+
+
 #home .card .commentInput {
   display: flex;
   align-items: center;
@@ -55,4 +71,17 @@
 #home .card img.postImage {
   width: 100%;
   max-height: 500px;
+}
+
+@media (max-width: 768px) {
+  #home .homePage {
+    flex-direction: column;
+  }
+  #home .homePage2 {
+    width: 100%;
+  }
+  #home .homepage .allPost {
+    width: 100%
+  }
+
 }

@@ -6,7 +6,7 @@ const Post = mongoose.model("Post");
 
 router.get("/allpost", login, (req, res) => {
   Post.find()
-    .populate("postedBy")
+    .populate("postedBy", "_id, name")
     .then((posts) => {
       res.json({ posts });
     })

@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Profile() {
+  const [myPosts, setMyPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("/mypost", {
+      headers: {
+        Authorization: "Muxtor " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setMyPosts(result.myPosts);
+      });
+  }, []);
+
   return (
     <div className="profile">
       <div className="profileMain">
@@ -21,41 +35,11 @@ export default function Profile() {
         </div>
       </div>
       <div className="gallery">
-        <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="rasm"
-          className="imgItem"
-        />
-        <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="rasm"
-          className="imgItem"
-        />
-        <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="rasm"
-          className="imgItem"
-        />
-        <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="rasm"
-          className="imgItem"
-        />
-        <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="rasm"
-          className="imgItem"
-        />
-        <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="rasm"
-          className="imgItem"
-        />
-        <img
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="rasm"
-          className="imgItem"
-        />
+        {myPosts.map((post) => (
+          <div className="img-item">
+            <img src={post.photo} alt={post.title} />
+          </div>
+        ))}
       </div>
     </div>
   );

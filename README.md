@@ -42,3 +42,7 @@
   Home pagega Hamma postlarni chiqaramiz!
 - 21 qadam:
   Prifiledan chiqish tugmasini qildik!.
+- 22 qadam:
+  Profile qismga userga tegishli postlarni chiqarib chiqamiz!.
+- 23 qadam:
+  Navbar va boshqa joylarni responsev holatga keltirildi!.

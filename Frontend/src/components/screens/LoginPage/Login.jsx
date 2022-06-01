@@ -75,7 +75,7 @@ export default function Login(props) {
         Profilga kirish
       </button>
       <p className="signup">
-        Akauntingiz yo'qmi?{/* eslint-disable-next-line */}
+        Akauntingiz yo'qmi? {" " /* eslint-disable-next-line */}
         <a href="#" onClick={() => setClicked(!clicked)}>
           Ro'yhatdan o'tish
         </a>

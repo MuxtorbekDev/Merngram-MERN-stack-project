@@ -102,7 +102,7 @@ section {
 .container .user .formBx .form .signup a {
   font-weight: 600;
   text-decoration: none;
-  color: #000000;
+  color: blue;
 }
 .container .signupBx {
   pointer-events: none;

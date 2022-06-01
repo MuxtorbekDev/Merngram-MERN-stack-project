@@ -94,7 +94,7 @@ export default function SignIn() {
                   Ro'yhatdan o'tish
                 </button>
                 <p className="signup">
-                  Akauntingiz bormi?{/* eslint-disable-next-line */}
+                  Akauntingiz bormi?{" " /* eslint-disable-next-line */}
                   <a href="#" onClick={() => setClicked(!clicked)}>
                     Akauntga kirish
                   </a>

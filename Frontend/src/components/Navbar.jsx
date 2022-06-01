@@ -1,6 +1,14 @@
 import React, { useContext } from "react";
 import { UserContext } from "../App";
 import { Link, useNavigate } from "react-router-dom";
+import "./screens/css/navbar.css";
+import {
+  MdOutlinePostAdd,
+  MdOutlineLogout,
+  MdOutlineHome,
+} from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
+import { VscSignIn } from "react-icons/vsc";
 
 export const Navbar = () => {
   // eslint-disable-next-line
@@ -12,22 +20,28 @@ export const Navbar = () => {
       return [
         <>
           <li>
-            <Link to="/createpost">Post Yaratish</Link>
+            <Link to="/">
+              <MdOutlineHome fontSize={"2.2rem"} />
+            </Link>
           </li>
           <li>
-            <Link to="/profile">Mening Profilim</Link>
+            <Link to="/createpost">
+              <MdOutlinePostAdd fontSize={"2.2rem"} />
+            </Link>
           </li>
           <li>
-            <button
-              className="btn"
-              onClick={() => {
-                localStorage.clear();
-                dispatch({ type: "CLEAR" });
-                navigate("/signin");
-              }}
-            >
-              Chiqish
-            </button>
+            <Link to="/profile">
+              <CgProfile fontSize={"2.2rem"} />
+            </Link>
+          </li>
+          <li
+            onClick={() => {
+              localStorage.clear();
+              dispatch({ type: "CLEAR" });
+              navigate("/signin");
+            }}
+          >
+            <MdOutlineLogout fontSize={"2.2rem"} />
           </li>
         </>,
       ];
@@ -35,7 +49,9 @@ export const Navbar = () => {
       return [
         <>
           <li>
-            <Link to="/signin">Kirish</Link>
+            <Link to="/signin">
+              <VscSignIn fontSize={"2.2rem"} />
+            </Link>
           </li>
         </>,
       ];
@@ -43,15 +59,13 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="teal lighten-2">
-      <div className="nav-wrapper  container ">
+    <div className="navbar">
+      <div className="  container ">
         <Link to={state ? "/" : "/signin"} className="brand-logo">
-          MernGram
+          <h2 className="brand-logo">MernGram</h2>
         </Link>
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
-          {renderNav()}
-        </ul>
+        <ul>{renderNav()}</ul>
       </div>
-    </nav>
+    </div>
   );
 };

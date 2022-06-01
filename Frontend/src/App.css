@@ -5,6 +5,7 @@ nav.navBg {
 }
 
 .container {
+  padding-top: 4rem;
   width: 85%;
   margin: 0 auto;
 }
@@ -47,13 +48,19 @@ h2.mern-brend {
 
 }
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid ;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
 }
-.gallery .imgItem {
-  max-width: 32%;
+.gallery .img-item {
+  width: 100%;
+  height: 250px;
   margin-top: 10px;
+}
+
+.gallery .img-item img {
+  width: 100%;
+  height: 100%;
 }
 
 .home__card {
