@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const login = require("../middleware/login");
 const Post = mongoose.model("Post");
 
-router.get("/allpost", (req, res) => {
+router.get("/allpost", login, (req, res) => {
   Post.find()
-    .populate("postedBy", "_id", "name")
+    .populate("postedBy")
     .then((posts) => {
       res.json({ posts });
     })

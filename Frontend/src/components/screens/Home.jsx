@@ -1,52 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "./css/home.css";
 
 export default function Home() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("/allpost", {
+      headers: {
+        Authorization: "Muxtor " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setData(result.posts);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
   return (
-    <div className="home">
-      <div className="card home__card">
-        <h4>Muxtor</h4>
-        <div className="card-image">
-          <img src="https://nout.uz/wp-content/uploads/2021/11/k513e-vivobook-1-1.jpg" />
-        </div>
-        <div className="card-content">
-          <i className="material-icons" style={{ color: "red" }}>
-            favorite
-          </i>
-          <h6>Title</h6>
-          <p>It is my first post</p>
+    <div id="home" className="home">
+      <div className="row">
+        {data
+          .map((item) => {
+            return (
+              <div className="col s8" key={item._id}>
+                <div className="card">
+                  <div className="username">
+                    <img
+                      src="https://scontent-sin6-1.cdninstagram.com/t51.2885-19/11311986_947042135307302_1552128625_a.jpg"
+                      alt="user"
+                    />
+                    <p>{item.postedBy.name}</p>
+                  </div>
+                  <img
+                    className="postImage"
+                    src={item.photo}
+                    alt={item.title}
+                  />
+                  <div className="status">
+                    <div className="like">
+                      <i class="material-icons">favorite</i>
+                      <i class="material-icons">message</i>
+                    </div>
 
-          <input type="text" placeholder="add a comment" />
-        </div>
-      </div>
+                    <div>
+                      <b>{item.title}</b>
+                      <p>{item.body}</p>
+                    </div>
+                    <div className="comment">
+                      <b>johndoe</b> So stunning
+                    </div>
+                  </div>
+                  <div className="commentInput">
+                    <textarea placeholder="Add a comment…"></textarea>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+          .reverse()}
 
-      <div className="card home__card">
-        <h4>Muxtor</h4>
-        <div className="card-image">
-          <img src="https://nout.uz/wp-content/uploads/2021/11/k513e-vivobook-1-1.jpg" />
-        </div>
-        <div className="card-content">
-          <i className="material-icons" style={{ color: "red" }}>
-            favorite
-          </i>
-          <h6>Title</h6>
-          <p>It is my first post</p>
-
-          <input type="text" placeholder="add a comment" />
-        </div>
-      </div>
-
-      <div className="card home__card">
-        <h4>Muxtor</h4>
-        <div className="card-image">
-          <img src="https://nout.uz/wp-content/uploads/2021/11/k513e-vivobook-1-1.jpg" />
-        </div>
-        <div className="card-content">
-          <i className="material-icons" style={{ color: "red" }}>
-            favorite
-          </i>
-          <h6>Title</h6>
-          <p>It is my first post</p>
-          <input type="text" placeholder="add a comment" />
+        <div className="col s3">
+          <h1>Postlarim </h1>
         </div>
       </div>
     </div>
