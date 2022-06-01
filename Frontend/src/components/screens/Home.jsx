@@ -30,7 +30,7 @@ export default function Home() {
                 <div className="card">
                   <div className="username">
                     <img
-                      src="https://scontent-sin6-1.cdninstagram.com/t51.2885-19/11311986_947042135307302_1552128625_a.jpg"
+                      src="https://picsum.photos/id/237/200/300"
                       alt="user"
                     />
                     <p>{item.postedBy.name}</p>

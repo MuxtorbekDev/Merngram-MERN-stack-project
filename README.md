@@ -40,3 +40,5 @@
   Reducer statelar orqali navbar qismini to'g'irlaymiz . Faqat ruyxatdan o'tganlargagina post quyihs tugmasini kursatamiz . ruyxatdan utmaganlar post kurolmayda faqat signin page chiqib turadiga qilamiz.
 - 20 qadam:
   Home pagega Hamma postlarni chiqaramiz!
+- 21 qadam:
+  Prifiledan chiqish tugmasini qildik!.
