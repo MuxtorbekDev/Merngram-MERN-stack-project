@@ -46,3 +46,5 @@
   Profile qismga userga tegishli postlarni chiqarib chiqamiz!.
 - 23 qadam:
   Navbar va boshqa joylarni responsev holatga keltirildi!.
+- 24 qadam:
+  Like va unlike tugmalari uchun nnodejs da api yozdik!.
