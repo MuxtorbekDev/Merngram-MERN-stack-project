@@ -64,9 +64,24 @@
 #home .card .status b {
   color: #262626;
 }
-#home .card .status .like img {
-  padding: 8px;
-  width: 24px;
+#home .card .status .likeComment {
+  display: flex;
+  height: 2.8rem;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: .3rem
+}
+#home .card .status .likeComment .like {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: .3rem;
+}
+#home .card .status .likeComment .comment {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: .3rem;
 }
 #home .card img.postImage {
   width: 100%;

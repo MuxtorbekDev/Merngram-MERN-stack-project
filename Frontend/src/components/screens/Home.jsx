@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../App";
+import { FcLike } from "react-icons/fc";
+import { RiHeart3Line } from "react-icons/ri";
+import { FaRegComment } from "react-icons/fa";
 import "./css/home.css";
 
 export default function Home() {
   const [data, setData] = useState([]);
+  const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
     fetch("/allpost", {
@@ -18,6 +23,59 @@ export default function Home() {
         console.log(e);
       });
   }, []);
+
+  const likePost = (id) => {
+    console.log(id);
+
+    fetch("/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Muxtor " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const unLikePost = (id) => {
+    console.log(1);
+    fetch("/unlike", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Muxtor " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div id="home" className="home">
@@ -41,9 +99,27 @@ export default function Home() {
                       alt={item.title}
                     />
                     <div className="status">
-                      <div className="like">
-                        <i class="material-icons">favorite</i>
-                        <i class="material-icons">message</i>
+                      <div className="likeComment">
+                        <div className="like">
+                          {!item.likes.includes(state._id) ? (
+                            <RiHeart3Line
+                              onClick={() => likePost(item._id)}
+                              fontSize={"2rem"}
+                            />
+                          ) : (
+                            <FcLike
+                              onClick={() => unLikePost(item._id)}
+                              fontSize={"2rem"}
+                            />
+                          )}
+                          <span style={{ fontSize: "1.2rem" }}>
+                            {item.likes.length} Likes
+                          </span>
+                        </div>
+                        <div className="comment">
+                          <FaRegComment fontSize={"2rem"} />
+                          <span style={{ fontSize: "1.2rem" }}>0 Comments</span>
+                        </div>
                       </div>
 
                       <div>

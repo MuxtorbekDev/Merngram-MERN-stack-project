@@ -47,4 +47,6 @@
 - 23 qadam:
   Navbar va boshqa joylarni responsev holatga keltirildi!.
 - 24 qadam:
-  Like va unlike tugmalari uchun nnodejs da api yozdik!.
+  Like va unlike tugmalari uchun nodejs da api yozdik!.
+- 25 qadam:
+  Har bir user 1ta postga 1 marta like bosadigan qildik
