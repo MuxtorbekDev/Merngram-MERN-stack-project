@@ -49,4 +49,6 @@
 - 24 qadam:
   Like va unlike tugmalari uchun nodejs da api yozdik!.
 - 25 qadam:
-  Har bir user 1ta postga 1 marta like bosadigan qildik
+  Har bir user 1ta postga 1 marta like bosadigan qildik.
+- 26 qadam:
+  POstlarga comment yozish uchun Backendda API yozdik!.
