@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../App";
 import { FcLike } from "react-icons/fc";
 import { RiHeart3Line } from "react-icons/ri";
-import { FaRegComment } from "react-icons/fa";
+import { TbSend } from "react-icons/tb";
 import "./css/home.css";
+import CommentPost from "./CommentPost";
 
 export default function Home() {
   const [data, setData] = useState([]);
+  // eslint-disable-next-line
   const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
@@ -25,8 +27,6 @@ export default function Home() {
   }, []);
 
   const likePost = (id) => {
-    console.log(id);
-
     fetch("/like", {
       method: "put",
       headers: {
@@ -52,7 +52,6 @@ export default function Home() {
   };
 
   const unLikePost = (id) => {
-    console.log(1);
     fetch("/unlike", {
       method: "put",
       headers: {
@@ -61,6 +60,32 @@ export default function Home() {
       },
       body: JSON.stringify({
         postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const commentsPost = (text, postId) => {
+    fetch("/comments", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Muxtor " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId,
+        text,
       }),
     })
       .then((res) => res.json())
@@ -116,22 +141,29 @@ export default function Home() {
                             {item.likes.length} Likes
                           </span>
                         </div>
-                        <div className="comment">
-                          <FaRegComment fontSize={"2rem"} />
-                          <span style={{ fontSize: "1.2rem" }}>0 Comments</span>
-                        </div>
+                        <CommentPost item={item} />
                       </div>
 
                       <div>
                         <b>{item.title}</b>
                         <p>{item.body}</p>
                       </div>
-                      <div className="comment">
-                        <b>johndoe</b> So stunning
-                      </div>
                     </div>
+
                     <div className="commentInput">
-                      <textarea placeholder="Add a comment…"></textarea>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          commentsPost(e.target[0].value, item._id);
+                          e.target[0].value = "";
+                        }}
+                      >
+                        <input type="text" placeholder="Add a comment…" />
+                        <button type="submit" className="sendComment">
+                          {" "}
+                          <TbSend fontSize={"2rem"} />
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>

@@ -18,6 +18,7 @@
   max-width:  550px;
   height: auto;
   border: 1px solid #e6e6e6;
+  position: relative;
 }
 
 
@@ -29,14 +30,28 @@
   width: 32px;
   padding: 9px 8px;
 }
-#home .card .commentInput textarea {
+#home .card .commentInput form {
+  padding-top: 10px;
+  width: 100%;
+}
+#home .card .commentInput input {
   resize: none;
   border: none;
   margin: 16px;
   width: calc(100% - 88px);
   height: 18px;
+  width: 70%;
 }
-#home .card .commentInput textarea:focus {
+#home .card .commentInput form button.sendComment {
+  color: #666;
+  border: none;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  margin-right: 1rem;
+  float: right;
+}
+#home .card .commentInput input:focus {
   outline: none !important;
 }
 #home .card .postImage {
@@ -86,6 +101,71 @@
 #home .card img.postImage {
   width: 100%;
   max-height: 500px;
+}
+
+
+#home .card  .comments {
+  position: absolute;
+  bottom: 55px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+#home .card .comments .comment-boxs {
+  padding-top: 3rem;
+  background-color: #efefef;
+  min-height: 200px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+/* width */
+#home .card .comments .comment-boxs::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+#home .card .comments .comment-boxs::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+#home .card .comments .comment-boxs::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+#home .card .comments .comment-boxs::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#home .card  .close {
+  position: absolute;
+  text-align: right;
+  padding: .3rem .5rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+#home .card .comment-box {
+  border-bottom: .2px solid #e6e6e6;
+  padding-top: .7rem;
+  display: flex;
+}
+
+#home .card .comment-box  b {
+  font-size: .9rem;
+}
+#home .card .comment-box  span {
+  font-size: .7rem;
+}
+#home .card .comment-box .avatar img {
+  width: 40px;
 }
 
 @media (max-width: 768px) {

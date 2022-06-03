@@ -7,6 +7,7 @@ const Post = mongoose.model("Post");
 router.get("/allpost", login, (req, res) => {
   Post.find()
     .populate("postedBy", "_id, name")
+    .populate("comments.postedBy", "_id, name")
     .then((posts) => {
       res.json({ posts });
     })
@@ -91,7 +92,7 @@ router.put("/comments", login, (req, res) => {
     postedBy: req.user._id,
   };
   Post.findByIdAndUpdate(
-    req.body._id,
+    req.body.postId,
     {
       $push: { comments: comment },
     },
@@ -100,6 +101,7 @@ router.put("/comments", login, (req, res) => {
     }
   )
     .populate("comments.postedBy", "_id name")
+    .populate("postedBy", "_id, name")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });

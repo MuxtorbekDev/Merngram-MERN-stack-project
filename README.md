@@ -52,3 +52,5 @@
   Har bir user 1ta postga 1 marta like bosadigan qildik.
 - 26 qadam:
   POstlarga comment yozish uchun Backendda API yozdik!.
+- 27 qadam:
+  Comment yozamiz!.
