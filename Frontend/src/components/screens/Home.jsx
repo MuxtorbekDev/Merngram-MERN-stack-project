@@ -144,9 +144,18 @@ export default function Home() {
                         <CommentPost item={item} />
                       </div>
 
-                      <div>
-                        <b>{item.title}</b>
+                      <div className="postText">
+                        <h6>{item.title}</h6>
                         <p>{item.body}</p>
+                      </div>
+
+                      <div className="topComment">
+                        {item.comments.length > 0 ? (
+                          <>
+                            <b>Top Comment: </b>
+                            <span>{item.comments[0].text}</span>
+                          </>
+                        ) : null}
                       </div>
                     </div>
 
