@@ -54,3 +54,5 @@
   POstlarga comment yozish uchun Backendda API yozdik!.
 - 27 qadam:
   Comment yozamiz!.
+- 28 qadam:
+  Postlarni o'chirish funtionni yozdik va faqat postni egasi postlarni o'chiradigan qildik.

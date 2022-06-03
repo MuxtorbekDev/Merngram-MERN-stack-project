@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../App";
 import { FcLike } from "react-icons/fc";
-import { RiHeart3Line } from "react-icons/ri";
+import { RiHeart3Line, RiDeleteBin6Line } from "react-icons/ri";
 import { TbSend } from "react-icons/tb";
 import "./css/home.css";
 import CommentPost from "./CommentPost";
@@ -102,6 +102,20 @@ export default function Home() {
       .catch((err) => console.log(err));
   };
 
+  const deletePost = (postId) => {
+    fetch(`/deletepost/${postId}`, {
+      method: "delete",
+      headers: {
+        Authorization: "Muxtor " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        const newData = data.filter((item) => item._id !== result._id);
+        setData(newData);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div id="home" className="home">
       <div className="homePage">
@@ -142,6 +156,13 @@ export default function Home() {
                           </span>
                         </div>
                         <CommentPost item={item} />
+                        {item.postedBy._id === state._id && (
+                          <RiDeleteBin6Line
+                            onClick={() => deletePost(item._id)}
+                            fontSize={"2rem"}
+                            color={"red"}
+                          />
+                        )}
                       </div>
 
                       <div className="postText">
