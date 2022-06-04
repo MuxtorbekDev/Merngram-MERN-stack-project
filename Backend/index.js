@@ -13,6 +13,7 @@ const PORT = 5000;
 // Routes
 app.use(require("./routes/auth"));
 app.use(require("./routes/post"));
+app.use(require("./routes/user"));
 
 mongoose.connect(MONGODB_URI, () => {
   console.log("MongoDB was connected successfully");

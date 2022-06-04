@@ -56,3 +56,5 @@
   Comment yozamiz!.
 - 28 qadam:
   Postlarni o'chirish funtionni yozdik va faqat postni egasi postlarni o'chiradigan qildik.
+- 29 qadam:
+  Bita userga tegishli bo'lgan ma'lumotlarni chiqarish uchun API yozdik!
