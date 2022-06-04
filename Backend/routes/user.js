@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const login = require("./middleware/login");
-const Post = mongoose.model("Post");
-const User = mongoose.model("User");
+const login = require("../middleware/login");
+const Post = require("../models/post");
+const User = require("../models/user");
 
 router.get("/user/:id", login, (req, res) => {
   User.findOne({ _id: req.params.id })
@@ -22,4 +22,4 @@ router.get("/user/:id", login, (req, res) => {
     });
 });
 
-mongoose.exports = router;
+module.exports = router;

@@ -1,6 +1,3 @@
-const mongoose = require("mongoose");
-const User = mongoose.model("User");
-
 module.exports = (req, res, next) => {
   const { name, email, password } = req.body;
   if (!name) {

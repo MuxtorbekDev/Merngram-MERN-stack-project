@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
+const login = require("./middleware/login");
 const mongoose = require("mongoose");
 const { MONGODB_URI } = require("./keys");
-require("./models/user");
-require("./models/post");
+const Post = require("./models/post");
+const User = require("./models/user");
+
+// app.use(User);
+// app.use(Post);
 
 app.use(express.json());
 
