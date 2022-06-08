@@ -14,6 +14,7 @@ import Home from "./components/screens/Home";
 import Profile from "./components/screens/Profile";
 import CreatePost from "./components/screens/CreatePost";
 import { reducer, initialState } from "./reducers/userReducer";
+import UserProfile from "./components/screens/UserProfile";
 
 export const UserContext = createContext();
 
@@ -26,7 +27,6 @@ const Routing = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       dispatch({ type: "USER", payload: user });
-      navigate("/");
     } else {
       navigate("/signin");
     }
@@ -37,9 +37,12 @@ const Routing = () => {
   return (
     <div className="container">
       <Routes>
-        <Route path="/" index element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="profile" index element={<Profile />}>
+          {/* <Route path="/:userId" element={<UserProfile />} /> */}
+        </Route>
+        <Route path="/userprofile/:userId" element={<UserProfile />} />
         <Route path="/createpost" element={<CreatePost />} />
       </Routes>
     </div>

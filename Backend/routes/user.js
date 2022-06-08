@@ -8,7 +8,7 @@ const User = require("../models/user");
 router.get("/user/:id", login, (req, res) => {
   User.findOne({ _id: req.params.id })
     .then((user) => {
-      Post.find({ postedBy: req.params._id })
+      Post.find({ postedBy: req.params.id })
         .populate("postedBy", "_id, name")
         .exec((err, posts) => {
           if (err) {
@@ -18,6 +18,7 @@ router.get("/user/:id", login, (req, res) => {
         });
     })
     .catch((err) => {
+      console.log(err)
       return res.status(404).json({ error: "User Not Found" });
     });
 });

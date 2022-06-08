@@ -1,19 +1,24 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
+import { useParams } from "react-router-dom";
 
-export default function Profile() {
+export default function UserProfile(props) {
   const [myPosts, setMyPosts] = useState([]);
   const { state, dispatch } = useContext(UserContext);
+  const { userId } = useParams();
 
+  console.log(userId);
   useEffect(() => {
-    fetch("/mypost", {
+    console.log("1");
+    fetch(`/user/${userId}`, {
       headers: {
         Authorization: "Muxtor " + localStorage.getItem("jwt"),
       },
     })
       .then((res) => res.json())
       .then((result) => {
-        setMyPosts(result.myPosts);
+        console.log(result);
+        // setMyPosts(result.myPosts);
       });
   }, []);
 
@@ -28,7 +33,7 @@ export default function Profile() {
           />
         </div>
         <div>
-          <h4>{state ? state.name : "Loading"}</h4>
+          <h4>{state ? state.name : "Loading"} 1</h4>
           <div className="infoProfile">
             <p>99 posts</p>
             <p>99 followers</p>
