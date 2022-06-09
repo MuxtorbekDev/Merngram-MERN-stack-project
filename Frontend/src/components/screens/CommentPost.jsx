@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GrClose } from "react-icons/gr";
 import { FaRegComment } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 
 export default function CommentPost({ item }) {
   const [showComments, setShowComments] = React.useState(false);
+  // eslint-disable-next-line
+  const { state, dispatch } = useContext(UserContext);
 
   return (
     <>
@@ -29,14 +33,30 @@ export default function CommentPost({ item }) {
               .map((c) => (
                 <div className="comment-box" key={c._id}>
                   <div className="avatar">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"
-                      alt="avatar"
-                    />
+                    <Link
+                      to={
+                        c.postedBy._id !== state._id
+                          ? `/profile/${c.postedBy._id}`
+                          : "/profile"
+                      }
+                    >
+                      <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"
+                        alt="avatar"
+                      />
+                    </Link>
                   </div>
                   <div className="text">
-                    <b>{c.postedBy.name} </b>
-                    <p>{c.text}</p>
+                    <Link
+                      to={
+                        c.postedBy._id !== state._id
+                          ? `/profile/${c.postedBy._id}`
+                          : "/profile"
+                      }
+                    >
+                      <b>{c.postedBy.name} </b>
+                      <p>{c.text}</p>
+                    </Link>
                   </div>
                 </div>
               ))

@@ -39,10 +39,9 @@ const Routing = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="profile" index element={<Profile />}>
-          {/* <Route path="/:userId" element={<UserProfile />} /> */}
-        </Route>
-        <Route path="/userprofile/:userId" element={<UserProfile />} />
+        <Route path="/profile" index element={<Profile />} />
+        <Route path="/profile/:userId" index element={<UserProfile />} />
+        {/* <Route path="/userprofile/:userId" element={<UserProfile />} /> */}
         <Route path="/createpost" element={<CreatePost />} />
       </Routes>
     </div>

@@ -58,3 +58,5 @@
   Postlarni o'chirish funtionni yozdik va faqat postni egasi postlarni o'chiradigan qildik.
 - 29 qadam:
   Bita userga tegishli bo'lgan ma'lumotlarni chiqarish uchun API yozdik!
+- 30 qadam:
+  User pirofile yaratildi. Userga tegishli bo'lgan postlarni user profilida chiqardik.

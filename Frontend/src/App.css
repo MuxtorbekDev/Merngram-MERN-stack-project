@@ -45,7 +45,7 @@ h2.mern-brend {
   display: flex;
   justify-content: space-around;
   width: 100%;
-
+  gap: 5px
 }
 .gallery {
   display: grid ;

@@ -1,15 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../App";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "./Loader";
+import NoPosts from "./NoPosts";
 
-export default function UserProfile(props) {
-  const [myPosts, setMyPosts] = useState([]);
-  const { state, dispatch } = useContext(UserContext);
+export default function UserProfile() {
+  const [userProfile, setUserProfile] = useState(null);
   const { userId } = useParams();
 
-  console.log(userId);
   useEffect(() => {
-    console.log("1");
     fetch(`/user/${userId}`, {
       headers: {
         Authorization: "Muxtor " + localStorage.getItem("jwt"),
@@ -17,37 +15,48 @@ export default function UserProfile(props) {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        // setMyPosts(result.myPosts);
+        setUserProfile(result);
       });
+
+    // eslint-disable-next-line
   }, []);
 
   return (
-    <div className="profile">
-      <div className="profileMain">
-        <div>
-          <img
-            src="https://www.w3schools.com/howto/img_avatar.png"
-            alt="Avatar"
-            className="profileImg"
-          />
-        </div>
-        <div>
-          <h4>{state ? state.name : "Loading"} 1</h4>
-          <div className="infoProfile">
-            <p>99 posts</p>
-            <p>99 followers</p>
-            <p>99 following</p>
+    <>
+      {userProfile ? (
+        <div className="profile">
+          <div className="profileMain">
+            <div>
+              <img
+                src="https://www.w3schools.com/howto/img_avatar.png"
+                alt="Avatar"
+                className="profileImg"
+              />
+            </div>
+            <div>
+              <h4>{userProfile.user.name}</h4>
+              <div className="infoProfile">
+                <p>{userProfile.posts.length} posts </p>
+                <p>99 followers</p>
+                <p>99 following</p>
+              </div>
+            </div>
           </div>
+          {userProfile.posts.length ? (
+            <div className="gallery">
+              {userProfile.posts.map((post) => (
+                <div className="img-item" key={post._id}>
+                  <img src={post.photo} alt={post.title} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <NoPosts />
+          )}
         </div>
-      </div>
-      <div className="gallery">
-        {myPosts.map((post) => (
-          <div className="img-item">
-            <img src={post.photo} alt={post.title} />
-          </div>
-        ))}
-      </div>
-    </div>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 }

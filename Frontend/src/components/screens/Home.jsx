@@ -5,6 +5,8 @@ import { RiHeart3Line, RiDeleteBin6Line } from "react-icons/ri";
 import { TbSend } from "react-icons/tb";
 import "./css/home.css";
 import CommentPost from "./CommentPost";
+import { Link } from "react-router-dom";
+import Loader from "./Loader";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -116,91 +118,105 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <div id="home" className="home">
       <div className="homePage">
-        <div className="allPost">
-          {data
-            .map((item) => {
-              return (
-                <div className="" key={item._id}>
-                  <div className="card">
-                    <div className="username">
+        {data.length > 0 ? (
+          <div className="allPost">
+            {data
+              .map((item) => {
+                return (
+                  <div className="" key={item._id}>
+                    <div className="card">
+                      <Link
+                        to={
+                          item.postedBy._id !== state._id
+                            ? `/profile/${item.postedBy._id}`
+                            : "/profile"
+                        }
+                      >
+                        <div className="username">
+                          <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"
+                            alt="user"
+                          />
+                          <p>{item.postedBy.name}</p>
+                        </div>
+                      </Link>
+
                       <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"
-                        alt="user"
+                        className="postImage"
+                        src={item.photo}
+                        alt={item.title}
                       />
-                      <p>{item.postedBy.name}</p>
-                    </div>
-                    <img
-                      className="postImage"
-                      src={item.photo}
-                      alt={item.title}
-                    />
-                    <div className="status">
-                      <div className="likeComment">
-                        <div className="like">
-                          {!item.likes.includes(state._id) ? (
-                            <RiHeart3Line
-                              onClick={() => likePost(item._id)}
+                      <div className="status">
+                        <div className="likeComment">
+                          <div className="like">
+                            {!item.likes.includes(state._id) ? (
+                              <RiHeart3Line
+                                onClick={() => likePost(item._id)}
+                                fontSize={"2rem"}
+                              />
+                            ) : (
+                              <FcLike
+                                onClick={() => unLikePost(item._id)}
+                                fontSize={"2rem"}
+                              />
+                            )}
+                            <span style={{ fontSize: "1.2rem" }}>
+                              {item.likes.length} Likes
+                            </span>
+                          </div>
+                          <CommentPost item={item} />
+                          {item.postedBy._id === state._id && (
+                            <RiDeleteBin6Line
+                              onClick={() => deletePost(item._id)}
                               fontSize={"2rem"}
-                            />
-                          ) : (
-                            <FcLike
-                              onClick={() => unLikePost(item._id)}
-                              fontSize={"2rem"}
+                              color={"red"}
                             />
                           )}
-                          <span style={{ fontSize: "1.2rem" }}>
-                            {item.likes.length} Likes
-                          </span>
                         </div>
-                        <CommentPost item={item} />
-                        {item.postedBy._id === state._id && (
-                          <RiDeleteBin6Line
-                            onClick={() => deletePost(item._id)}
-                            fontSize={"2rem"}
-                            color={"red"}
-                          />
-                        )}
+
+                        <div className="postText">
+                          <h6>{item.title}</h6>
+                          <p>{item.body}</p>
+                        </div>
+
+                        <div className="topComment">
+                          {item.comments.length > 0 ? (
+                            <>
+                              <b>Top Comment: </b>
+                              <span>{item.comments[0].text}</span>
+                            </>
+                          ) : null}
+                        </div>
                       </div>
 
-                      <div className="postText">
-                        <h6>{item.title}</h6>
-                        <p>{item.body}</p>
+                      <div className="commentInput">
+                        <form
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            commentsPost(e.target[0].value, item._id);
+                            e.target[0].value = "";
+                          }}
+                        >
+                          <input type="text" placeholder="Add a comment…" />
+                          <button type="submit" className="sendComment">
+                            {" "}
+                            <TbSend fontSize={"2rem"} />
+                          </button>
+                        </form>
                       </div>
-
-                      <div className="topComment">
-                        {item.comments.length > 0 ? (
-                          <>
-                            <b>Top Comment: </b>
-                            <span>{item.comments[0].text}</span>
-                          </>
-                        ) : null}
-                      </div>
-                    </div>
-
-                    <div className="commentInput">
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          commentsPost(e.target[0].value, item._id);
-                          e.target[0].value = "";
-                        }}
-                      >
-                        <input type="text" placeholder="Add a comment…" />
-                        <button type="submit" className="sendComment">
-                          {" "}
-                          <TbSend fontSize={"2rem"} />
-                        </button>
-                      </form>
                     </div>
                   </div>
-                </div>
-              );
-            })
-            .reverse()}
-        </div>
+                );
+              })
+              .reverse()}
+          </div>
+        ) : (
+          <Loader />
+        )}
         <div className="homePage2">
           <h1>Postlarim </h1>
         </div>

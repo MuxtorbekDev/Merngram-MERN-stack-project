@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../App";
+import Loader from "./Loader";
+import NoPosts from "./NoPosts";
 
 export default function Profile() {
-  const [myPosts, setMyPosts] = useState([]);
+  const [myPosts, setMyPosts] = useState();
+  // eslint-disable-next-line
   const { state, dispatch } = useContext(UserContext);
 
   useEffect(() => {
@@ -18,31 +21,42 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="profile">
-      <div className="profileMain">
-        <div>
-          <img
-            src="https://www.w3schools.com/howto/img_avatar.png"
-            alt="Avatar"
-            className="profileImg"
-          />
-        </div>
-        <div>
-          <h4>{state ? state.name : "Loading"}</h4>
-          <div className="infoProfile">
-            <p>99 posts</p>
-            <p>99 followers</p>
-            <p>99 following</p>
+    <>
+      {myPosts ? (
+        <div className="profile">
+          <div className="profileMain">
+            <div>
+              <img
+                src="https://www.w3schools.com/howto/img_avatar.png"
+                alt="Avatar"
+                className="profileImg"
+              />
+            </div>
+            <div>
+              <h4>{state ? state.name : "Loading"}</h4>
+              <div className="infoProfile">
+                <p>{myPosts.length} posts</p>
+                <p>99 followers</p>
+                <p>99 following</p>
+              </div>
+            </div>
           </div>
+
+          {myPosts.length ? (
+            <div className="gallery">
+              {myPosts.map((post) => (
+                <div className="img-item" key={post._id}>
+                  <img src={post.photo} alt={post.title} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <NoPosts />
+          )}
         </div>
-      </div>
-      <div className="gallery">
-        {myPosts.map((post) => (
-          <div className="img-item">
-            <img src={post.photo} alt={post.title} />
-          </div>
-        ))}
-      </div>
-    </div>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 }

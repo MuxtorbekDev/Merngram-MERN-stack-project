@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const login = require("../middleware/login");
 const Post = require("../models/post");
 const User = require("../models/user");
 
-router.get("/user/:id", login, (req, res) => {
+router.get("/user/:id", (req, res) => {
   User.findOne({ _id: req.params.id })
+    .select("-password")
     .then((user) => {
       Post.find({ postedBy: req.params.id })
         .populate("postedBy", "_id, name")
@@ -18,7 +18,6 @@ router.get("/user/:id", login, (req, res) => {
         });
     })
     .catch((err) => {
-      console.log(err)
       return res.status(404).json({ error: "User Not Found" });
     });
 });
