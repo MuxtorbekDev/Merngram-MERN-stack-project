@@ -60,3 +60,5 @@
   Bita userga tegishli bo'lgan ma'lumotlarni chiqarish uchun API yozdik!
 - 30 qadam:
   User pirofile yaratildi. Userga tegishli bo'lgan postlarni user profilida chiqardik.
+- 31 qadam:
+  Follow va unfollow ga API yozib oldik!.

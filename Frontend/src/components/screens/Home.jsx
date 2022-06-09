@@ -215,7 +215,9 @@ export default function Home() {
               .reverse()}
           </div>
         ) : (
-          <Loader />
+          <div style={{ width: "400px" }}>
+            <Loader />
+          </div>
         )}
         <div className="homePage2">
           <h1>Postlarim </h1>
