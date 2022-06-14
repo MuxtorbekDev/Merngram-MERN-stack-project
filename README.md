@@ -62,3 +62,5 @@
   User pirofile yaratildi. Userga tegishli bo'lgan postlarni user profilida chiqardik.
 - 31 qadam:
   Follow va unfollow ga API yozib oldik!.
+- 32 qadam:
+  Follow va unfollow tugmalarini qo'shdik va funtionlarni ishlatdik, xatolarni tog'irlandi!.

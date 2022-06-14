@@ -42,6 +42,7 @@ router.put("/follow", login, (req, res) => {
         },
         { new: true }
       )
+        .select("-password")
         .then((result) => {
           res.json(result);
         })
@@ -72,6 +73,7 @@ router.put("/unfollow", login, (req, res) => {
         },
         { new: true }
       )
+        .select("-password")
         .then((result) => {
           res.json(result);
         })

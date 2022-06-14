@@ -84,3 +84,14 @@ h2.mern-brend {
 
 
 
+button.btnFollow {
+  background-color: #fff;
+  color: #333;
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 10px 15px;
+  border: 1px solid #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}

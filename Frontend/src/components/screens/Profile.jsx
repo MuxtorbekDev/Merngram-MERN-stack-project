@@ -36,8 +36,8 @@ export default function Profile() {
               <h4>{state ? state.name : "Loading"}</h4>
               <div className="infoProfile">
                 <p>{myPosts.length} posts</p>
-                <p>99 followers</p>
-                <p>99 following</p>
+                <p>{state ? state.followers.length : "0"} followers</p>
+                <p>{state ? state.following.length : "0"} following</p>
               </div>
             </div>
           </div>
