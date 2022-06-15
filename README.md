@@ -64,3 +64,5 @@
   Follow va unfollow ga API yozib oldik!.
 - 32 qadam:
   Follow va unfollow tugmalarini qo'shdik va funtionlarni ishlatdik, xatolarni tog'irlandi!.
+- 33 qadam:
+  user follow bosgan userlarning postini chiqaradigan API yozdik!.
