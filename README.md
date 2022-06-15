@@ -66,3 +66,5 @@
   Follow va unfollow tugmalarini qo'shdik va funtionlarni ishlatdik, xatolarni tog'irlandi!.
 - 33 qadam:
   user follow bosgan userlarning postini chiqaradigan API yozdik!.
+- 34 qadam:
+  User folllow bosgan kuzatuvchilarning postlarini /myfollowposts router da chiqardik!

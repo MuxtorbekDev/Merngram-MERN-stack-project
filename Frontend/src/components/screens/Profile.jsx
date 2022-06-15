@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 import Loader from "./Loader";
 import NoPosts from "./NoPosts";
@@ -38,6 +39,11 @@ export default function Profile() {
                 <p>{myPosts.length} posts</p>
                 <p>{state ? state.followers.length : "0"} followers</p>
                 <p>{state ? state.following.length : "0"} following</p>
+              </div>
+              <div>
+                <Link to="/myfollowerspost">
+                  <button className="btnFollow">Show My Following Posts</button>
+                </Link>
               </div>
             </div>
           </div>

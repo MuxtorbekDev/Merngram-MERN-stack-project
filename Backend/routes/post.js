@@ -26,6 +26,14 @@ router.get("/mypost", login, (req, res) => {
     });
 });
 
+router.get("/getsubspost", login, (req, res) => {
+  Post.find({ postedBy: { $in: req.user.following } })
+    .populate("postedBy", "_id name")
+    .populate("comments.postedBy", "_id name")
+    .then((posts) => res.json({ posts }))
+    .catch((err) => console.log(err));
+});
+
 router.post("/createpost", login, (req, res) => {
   const { title, body, pic } = req.body;
   if (!title || !body || !pic) {
@@ -126,14 +134,6 @@ router.delete("/deletepost/:postId", login, (req, res) => {
           .catch((err) => console.log(err));
       }
     });
-});
-
-router.get("/getsubspost", login, (req, res) => {
-  Post.find({ postedBy: { $in: req.user.following } })
-    .populate("postedBy", "_id name")
-    .populate("comments.postedBy", "_id name")
-    .then((posts) => res.json({ posts }))
-    .catch((err) => console.log(err));
 });
 
 module.exports = router;

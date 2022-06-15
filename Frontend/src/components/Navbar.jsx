@@ -9,6 +9,7 @@ import {
 } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { VscSignIn } from "react-icons/vsc";
+import { IoIosAlbums } from "react-icons/io";
 
 export const Navbar = () => {
   // eslint-disable-next-line
@@ -22,6 +23,11 @@ export const Navbar = () => {
           <li>
             <Link to="/">
               <MdOutlineHome fontSize={"2.2rem"} />
+            </Link>
+          </li>
+          <li>
+            <Link to="/myfollowerspost">
+              <IoIosAlbums fontSize={"2.2rem"} />
             </Link>
           </li>
           <li>

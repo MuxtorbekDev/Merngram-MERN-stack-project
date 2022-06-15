@@ -14,8 +14,7 @@
 
 #home .card {
   background-color: #fff;
-  min-width: 350px;
-  max-width:  550px;
+  min-width:  400px;
   height: auto;
   border: 1px solid #e6e6e6;
   position: relative;

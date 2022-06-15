@@ -15,6 +15,7 @@ import Profile from "./components/screens/Profile";
 import CreatePost from "./components/screens/CreatePost";
 import { reducer, initialState } from "./reducers/userReducer";
 import UserProfile from "./components/screens/UserProfile";
+import SubscrUserPost from "./components/screens/SubscrUserPost";
 
 export const UserContext = createContext();
 
@@ -43,6 +44,7 @@ const Routing = () => {
         <Route path="/profile/:userId" index element={<UserProfile />} />
         {/* <Route path="/userprofile/:userId" element={<UserProfile />} /> */}
         <Route path="/createpost" element={<CreatePost />} />
+        <Route path="/myfollowerspost" element={<SubscrUserPost />} />
       </Routes>
     </div>
   );
