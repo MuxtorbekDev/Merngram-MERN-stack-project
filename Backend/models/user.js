@@ -13,6 +13,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  pic: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/ddlhqjoih/image/upload/v1655353222/samples/usernophoto_bcagpc.png",
+  },
   followers: [
     {
       type: Schema.Types.ObjectId,

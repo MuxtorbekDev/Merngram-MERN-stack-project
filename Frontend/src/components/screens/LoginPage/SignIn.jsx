@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/style.css";
 import M from "materialize-css";
 import Login from "./Login";
@@ -11,8 +11,28 @@ export default function SignIn() {
   const [logEmail, setLogEmail] = useState("");
   const [logPassword, setLogPassword] = useState("");
   const [clicked, setClicked] = useState(false);
+  const [image, setImage] = useState(undefined);
+  const [url, setUrl] = useState("");
 
-  const postData = () => {
+  const uploadPicture = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "MernGramMuxtorbek");
+    data.append("cloud_name", "ddlhqjoih");
+    fetch("https://api.cloudinary.com/v1_1/ddlhqjoih/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUrl(data.url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const ourFields = () => {
     if (
       // eslint-disable-next-line
       !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -34,6 +54,7 @@ export default function SignIn() {
         name: regName,
         password: regPassword,
         email: regEmail,
+        pic: url,
       }),
     })
       .then((res) => res.json())
@@ -46,6 +67,20 @@ export default function SignIn() {
         }
       });
   };
+
+  const postData = () => {
+    if (image) {
+      uploadPicture();
+    } else {
+      ourFields();
+    }
+  };
+
+  useEffect(() => {
+    if (url) {
+      ourFields();
+    }
+  }, [url]);
 
   return (
     <>
@@ -73,18 +108,22 @@ export default function SignIn() {
             <div className="formBx">
               <div className="form">
                 <h2>Ro'yhatdan o'tish</h2>
-                <div class="containers">
+                <div className="containers">
                   <img
                     src="https://res.cloudinary.com/ddlhqjoih/image/upload/v1655353222/samples/usernophoto_bcagpc.png"
                     alt="Avatar"
-                    class="images"
+                    className="images"
                   />
-                  <div class="middles">
-                    <div class="texts">
-                      <label for="inputphoto" class="custom-file-upload">
+                  <div className="middles">
+                    <div className="texts">
+                      <label
+                        htmlFor="inputphoto"
+                        className="custom-file-upload"
+                      >
                         <input
                           type="file"
                           id="inputphoto"
+                          onChange={(e) => setImage(e.target.files[0])}
                           style={{ display: "none" }}
                         />
                         <MdOutlineAddPhotoAlternate
@@ -118,9 +157,9 @@ export default function SignIn() {
                 </button>
                 <p className="signup">
                   Akauntingiz bormi?{" " /* eslint-disable-next-line */}
-                  <a href="#" onClick={() => setClicked(!clicked)}>
+                  <span onClick={() => setClicked(!clicked)}>
                     Akauntga kirish
-                  </a>
+                  </span>
                 </p>
               </div>
             </div>

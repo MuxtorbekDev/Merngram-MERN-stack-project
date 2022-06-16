@@ -99,10 +99,11 @@ section {
   text-transform: uppercase;
   font-weight: 300;
 }
-.container .user .formBx .form .signup a {
+.container .user .formBx .form .signup span {
   font-weight: 600;
   text-decoration: none;
   color: blue;
+  cursor: pointer;
 }
 .container .signupBx {
   pointer-events: none;
@@ -143,6 +144,7 @@ section {
   align-content: center;
   justify-content: center;
   width: 100%;
+
 }
 
 .signupBx .images {
@@ -163,6 +165,8 @@ section {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+  cursor: pointer;
+
 }
 
 .signupBx .containers:hover .images {

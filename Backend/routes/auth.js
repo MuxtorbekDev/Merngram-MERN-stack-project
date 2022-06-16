@@ -5,14 +5,22 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../keys");
 const login = require("../middleware/login");
-const mdl = require("../middleware/mdl");
 
 router.get("/protected", login, (req, res) => {
   res.send("hello world");
 });
 
-router.post("/signup", mdl, (req, res) => {
-  const { name, email, password } = req.body;
+router.post("/signup", (req, res) => {
+  const { name, email, password, pic } = req.body;
+  if (!name) {
+    res.status(422).json({ error: "Iltimos ismingiz kiritng!" });
+  }
+  if (!email) {
+    res.status(422).json({ error: "Iltimos emailingiz kiritng!" });
+  }
+  if (!password) {
+    res.status(422).json({ error: "Iltimos Parol kiritng!" });
+  }
 
   User.findOne({ email: email }).then((savedUser) => {
     if (savedUser) {
@@ -23,6 +31,7 @@ router.post("/signup", mdl, (req, res) => {
         email,
         name,
         password: hashedPassword,
+        pic,
       });
 
       user
@@ -57,10 +66,10 @@ router.post("/signin", (req, res) => {
         if (doMatch) {
           // res.json({ msg: "successfully signed in" });
           const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
-          const { _id, name, email, followers, following } = savedUser;
+          const { _id, name, email, followers, following, pic } = savedUser;
           res.json({
             token: token,
-            user: { _id, name, email, followers, following },
+            user: { _id, name, email, followers, following, pic },
           });
         } else {
           return res.status(422).json({ error: "Parolingiz  xato!" });

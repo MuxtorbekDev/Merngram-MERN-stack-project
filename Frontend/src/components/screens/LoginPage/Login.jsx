@@ -76,9 +76,7 @@ export default function Login(props) {
       </button>
       <p className="signup">
         Akauntingiz yo'qmi? {" " /* eslint-disable-next-line */}
-        <a href="#" onClick={() => setClicked(!clicked)}>
-          Ro'yhatdan o'tish
-        </a>
+        <span onClick={() => setClicked(!clicked)}>Ro'yhatdan o'tish</span>
       </p>
     </div>
   );

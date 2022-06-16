@@ -28,7 +28,7 @@ export default function Profile() {
           <div className="profileMain">
             <div>
               <img
-                src="https://www.w3schools.com/howto/img_avatar.png"
+                src={state ? state.pic : "Loading..."}
                 alt="Avatar"
                 className="profileImg"
               />
