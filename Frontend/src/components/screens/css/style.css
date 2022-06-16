@@ -137,8 +137,7 @@ section {
 .active .signinBx .imgBx {
   left: -100%;
 }
-
-.signupBx .containers {
+.containers {
   position: relative;
   display: flex;
   align-content: center;
@@ -146,8 +145,7 @@ section {
   width: 100%;
 
 }
-
-.signupBx .images {
+ .images {
   opacity: 1;
   display: block;
   width: 30%;
@@ -156,7 +154,7 @@ section {
   backface-visibility: hidden;
 }
 
-.signupBx .middles {
+ .middles {
   transition: .5s ease;
   opacity: 0;
   position: absolute;
@@ -169,15 +167,13 @@ section {
 
 }
 
-.signupBx .containers:hover .images {
+ .containers:hover .images {
   opacity: 0.3;
 }
-
-.signupBx .containers:hover .middles {
+ .containers:hover .middles {
   opacity: 1;
 }
-
-.signupBx .texts {
+ .texts {
   background-color: #04AA6D;
   color: white;
   font-size: 13px;

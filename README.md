@@ -72,3 +72,5 @@
   Profilega rasm joylash uchun ruyxatdan utish vaqtida rasm joylaydigan file input qushdik!
 - 36 qadam:
   Ruyxatdan o'tish vaqtida rasm yuklash funksiyalarini qo'shdik!.
+- 37 qadam:
+  Profileda rasmlarni uzgartirish faqat fronendda qilindi!

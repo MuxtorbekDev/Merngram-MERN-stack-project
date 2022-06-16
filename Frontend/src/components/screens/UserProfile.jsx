@@ -106,7 +106,7 @@ export default function UserProfile() {
           <div className="profileMain">
             <div>
               <img
-                src="https://www.w3schools.com/howto/img_avatar.png"
+                src={userProfile.user.pic}
                 alt="Avatar"
                 className="profileImg"
               />

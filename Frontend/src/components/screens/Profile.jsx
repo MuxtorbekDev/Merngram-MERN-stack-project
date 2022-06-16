@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 import Loader from "./Loader";
 import NoPosts from "./NoPosts";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
 export default function Profile() {
   const [myPosts, setMyPosts] = useState();
   // eslint-disable-next-line
   const { state, dispatch } = useContext(UserContext);
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     fetch("/mypost", {
@@ -21,17 +24,64 @@ export default function Profile() {
       });
   }, []);
 
+  useEffect(() => {
+    if (image) {
+      const data = new FormData();
+      data.append("file", image);
+      data.append("upload_preset", "MernGramMuxtorbek");
+      data.append("cloud_name", "ddlhqjoih");
+      fetch("https://api.cloudinary.com/v1_1/ddlhqjoih/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setUrl(data.url);
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...state, pic: data.url })
+          );
+          dispatch({ type: "UPDATEPIC", payload: data.url });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [image]);
+
+  const uploadPhoto = (file) => {
+    setImage(file);
+  };
+
   return (
     <>
       {myPosts ? (
         <div className="profile">
           <div className="profileMain">
             <div>
-              <img
-                src={state ? state.pic : "Loading..."}
-                alt="Avatar"
-                className="profileImg"
-              />
+              <div className="containers">
+                <img
+                  src={state ? state.pic : "Loading..."}
+                  alt="Avatar"
+                  className="profileImg"
+                />
+                <div className="middles">
+                  <div className="texts">
+                    <label htmlFor="inputphoto" className="custom-file-upload">
+                      <input
+                        type="file"
+                        id="inputphoto"
+                        onChange={(e) => uploadPhoto(e.target.files[0])}
+                        style={{ display: "none" }}
+                      />
+                      <MdOutlineAddPhotoAlternate
+                        fontSize={"2.2rem"}
+                        color={"#fff"}
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
             <div>
               <h4>{state ? state.name : "Loading"}</h4>

@@ -46,6 +46,7 @@ export default function Login(props) {
         } else {
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+          console.log(data);
           dispatch({ type: "USER", payload: data.user });
           M.toast({
             html: "Siz muvaffaqiyatli kirish qildingiz",
