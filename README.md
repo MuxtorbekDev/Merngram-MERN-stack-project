@@ -68,3 +68,5 @@
   user follow bosgan userlarning postini chiqaradigan API yozdik!.
 - 34 qadam:
   User folllow bosgan kuzatuvchilarning postlarini /myfollowposts router da chiqardik!
+- 35 qadam:
+  Profilega rasm joylash uchun ruyxatdan utish vaqtida rasm joylaydigan file input qushdik!

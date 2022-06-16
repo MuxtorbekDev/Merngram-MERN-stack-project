@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../css/style.css";
 import M from "materialize-css";
 import Login from "./Login";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
 export default function SignIn() {
   const [regName, setRegName] = useState("");
@@ -72,6 +73,28 @@ export default function SignIn() {
             <div className="formBx">
               <div className="form">
                 <h2>Ro'yhatdan o'tish</h2>
+                <div class="containers">
+                  <img
+                    src="https://res.cloudinary.com/ddlhqjoih/image/upload/v1655353222/samples/usernophoto_bcagpc.png"
+                    alt="Avatar"
+                    class="images"
+                  />
+                  <div class="middles">
+                    <div class="texts">
+                      <label for="inputphoto" class="custom-file-upload">
+                        <input
+                          type="file"
+                          id="inputphoto"
+                          style={{ display: "none" }}
+                        />
+                        <MdOutlineAddPhotoAlternate
+                          fontSize={"2.2rem"}
+                          color={"#fff"}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
                 <input
                   type="text"
                   placeholder="Ismingiz"

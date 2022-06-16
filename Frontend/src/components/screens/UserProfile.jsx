@@ -86,7 +86,7 @@ export default function UserProfile() {
         localStorage.setItem("user", JSON.stringify(data));
         setUserProfile((prevState) => {
           const newFollowers = prevState.user.followers.filter(
-            (s) => s != data._id
+            (s) => s !== data._id
           );
           return {
             ...prevState,
