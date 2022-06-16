@@ -74,3 +74,5 @@
   Ruyxatdan o'tish vaqtida rasm yuklash funksiyalarini qo'shdik!.
 - 37 qadam:
   Profileda rasmlarni uzgartirish faqat fronendda qilindi!
+- 38 qadam:
+  Profileda rasmlarni uzgartirish va api orqali ma'lumotlar bazasidan ham o'zgarishi!.
