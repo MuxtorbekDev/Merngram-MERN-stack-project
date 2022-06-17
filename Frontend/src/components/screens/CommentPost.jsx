@@ -40,10 +40,7 @@ export default function CommentPost({ item }) {
                           : "/profile"
                       }
                     >
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"
-                        alt="avatar"
-                      />
+                      <img src={c.postedBy.pic} alt="avatar" />
                     </Link>
                   </div>
                   <div className="text">

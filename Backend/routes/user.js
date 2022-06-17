@@ -100,4 +100,20 @@ router.put("/updatepic", login, (req, res) => {
   );
 });
 
+router.put("/editname", login, (req, res) => {
+  User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $set: { name: req.body.myName },
+    },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        return res.status(422).json({ err: "Your name can not be posted" });
+      }
+      res.json(result);
+    }
+  );
+});
+
 module.exports = router;

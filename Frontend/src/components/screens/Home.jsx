@@ -26,7 +26,7 @@ export default function Home() {
       .catch((e) => {
         console.log(e);
       });
-  }, []);
+  }, [data]);
 
   const likePost = (id) => {
     fetch("/like", {
@@ -137,10 +137,7 @@ export default function Home() {
                         }
                       >
                         <div className="username">
-                          <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"
-                            alt="user"
-                          />
+                          <img src={item.postedBy.pic} alt="user" />
                           <p>{item.postedBy.name}</p>
                         </div>
                       </Link>

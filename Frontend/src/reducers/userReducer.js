@@ -20,5 +20,11 @@ export const reducer = (state, action) => {
       pic: action.payload,
     };
   }
+  if (action.type === "EDITPROFILE") {
+    return {
+      ...state,
+      name: action.payload,
+    };
+  }
   return state;
 };

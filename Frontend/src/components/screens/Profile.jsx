@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 import Loader from "./Loader";
 import NoPosts from "./NoPosts";
+import M from "materialize-css";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { FaUserEdit } from "react-icons/fa";
 
 export default function Profile() {
   const [myPosts, setMyPosts] = useState();
   // eslint-disable-next-line
   const { state, dispatch } = useContext(UserContext);
   const [image, setImage] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
+  const [myName, setMyName] = useState("");
 
   useEffect(() => {
     fetch("/mypost", {
@@ -47,7 +51,6 @@ export default function Profile() {
           })
             .then((res) => res.json())
             .then((result) => {
-              console.log(result);
               localStorage.setItem(
                 "user",
                 JSON.stringify({ ...state, pic: result.pic })
@@ -65,6 +68,34 @@ export default function Profile() {
 
   const uploadPhoto = (file) => {
     setImage(file);
+  };
+
+  const editProfile = () => {
+    if (myName) {
+      fetch("/editname", {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Muxtor " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+          myName,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...state, name: data.name })
+          );
+          dispatch({ type: "EDITPROFILE", payload: data.name });
+          M.toast({
+            html: "O'zgarishlar saqlandi!",
+            classes: "#76ff03 light-green accent-3",
+          });
+        });
+    }
+    setIsEdit(false);
   };
 
   return (
@@ -98,7 +129,16 @@ export default function Profile() {
               </div>
             </div>
             <div>
-              <h4>{state ? state.name : "Loading"}</h4>
+              <div className="profilename">
+                <h4>{state ? state.name : "Loading"}</h4>
+                <button
+                  onClick={() => setIsEdit(true)}
+                  className="btn #0d47a1 blue darken-4"
+                  style={{ padding: "5px" }}
+                >
+                  <FaUserEdit fontSize={"2rem"} />
+                </button>
+              </div>
               <div className="infoProfile">
                 <p>{myPosts.length} posts</p>
                 <p>{state ? state.followers.length : "0"} followers</p>
@@ -111,6 +151,69 @@ export default function Profile() {
               </div>
             </div>
           </div>
+
+          {isEdit ? (
+            <div className="modalS" onClick={() => setIsEdit(false)}>
+              <div
+                className="modalS__content"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="modalHeader">
+                  <h4>Change Accaunt Profile</h4>
+                  <i
+                    style={{ cursor: "pointer", color: "#0d47a1" }}
+                    onClick={() => setIsEdit(false)}
+                    className="small material-icons "
+                  >
+                    close
+                  </i>
+                </div>
+                <div className="modalContent">
+                  <div className="file-field input-field">
+                    <div className="btn #0d47a1 blue darken-4">
+                      <span>
+                        <i className="material-icons">add_a_photo</i>
+                      </span>
+                      <input
+                        type="file"
+                        onChange={(e) => uploadPhoto(e.target.files[0])}
+                      />
+                    </div>
+                    <div className="file-path-wrapper">
+                      <input
+                        className="file-path validate"
+                        type="text"
+                        placeholder="You Photo"
+                      />
+                    </div>
+                  </div>
+                  <div className="input-field col s6">
+                    <i
+                      className="material-icons prefix"
+                      style={{ color: "#0d47a1" }}
+                    >
+                      account_circle
+                    </i>
+                    <input
+                      id="icon_prefix"
+                      onChange={(e) => setMyName(e.target.value)}
+                      type="text"
+                      className="validate"
+                    />
+                    <label htmlFor="icon_prefix">First Name</label>
+                  </div>
+                </div>
+                <div className="modalFooter">
+                  <button
+                    className="btn #0d47a1 blue darken-4"
+                    onClick={() => editProfile()}
+                  >
+                    Saqlash
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : null}
 
           {myPosts.length ? (
             <div className="gallery">

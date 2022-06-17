@@ -76,3 +76,5 @@
   Profileda rasmlarni uzgartirish faqat fronendda qilindi!
 - 38 qadam:
   Profileda rasmlarni uzgartirish va api orqali ma'lumotlar bazasidan ham o'zgarishi!.
+- 39 qadam:
+  Profileni taxrirlash funksiyasi qo'shildi !.

@@ -96,3 +96,35 @@ button.btnFollow {
   font-weight: 600;
   cursor: pointer;
 }
+
+.modalS {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999999999;
+}
+.modalS__content {
+  width: 50%;
+  padding: 30px;
+  background: #fff;
+  margin: 100px auto;
+}
+.modalHeader {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalFooter {
+  margin-top: 15px;
+}
+.profilename {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
