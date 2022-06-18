@@ -80,3 +80,5 @@
   Profileni taxrirlash funksiyasi qo'shildi !.
 - 40 qadam:
   User qidiruvning fronend qismini qilib bo'ldik!.
+- 41 qadam:
+  User qidiruv apini yozib ishga tushirdik!.

@@ -116,4 +116,12 @@ router.put("/editname", login, (req, res) => {
   );
 });
 
+router.post("/searchuser", (req, res) => {
+  const userSearchPanel = new RegExp("^" + req.body.query);
+  User.find({ email: { $regex: userSearchPanel } })
+    .select("_id name email pic")
+    .then((user) => res.json({ user }))
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;

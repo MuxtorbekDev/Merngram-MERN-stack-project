@@ -11,7 +11,9 @@ export default function SignIn() {
   const [logEmail, setLogEmail] = useState("");
   const [logPassword, setLogPassword] = useState("");
   const [clicked, setClicked] = useState(false);
-  const [image, setImage] = useState(undefined);
+  const [image, setImage] = useState(
+    "https://res.cloudinary.com/ddlhqjoih/image/upload/v1655353222/samples/usernophoto_bcagpc.png"
+  );
   const [url, setUrl] = useState("");
 
   const uploadPicture = () => {

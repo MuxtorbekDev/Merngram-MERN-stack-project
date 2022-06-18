@@ -15,13 +15,15 @@ import { IoIosAlbums } from "react-icons/io";
 
 export const Navbar = () => {
   const searchPanel = useRef(null);
+  const [search, setSearch] = useState("");
+  const [userFinded, setUserFinded] = useState([]);
   // eslint-disable-next-line
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     M.Modal.init(searchPanel.current);
-  });
+  }, []);
 
   const renderNav = () => {
     if (state) {
@@ -80,6 +82,21 @@ export const Navbar = () => {
     }
   };
 
+  const searchUser = (query) => {
+    setSearch(query);
+
+    fetch("/searchuser", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query }),
+    })
+      .then((res) => res.json())
+      .then((result) => setUserFinded(result.user))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="navbar">
       <div className="  container ">
@@ -96,27 +113,40 @@ export const Navbar = () => {
             <i className="material-icons prefix">
               <MdSearch fontSize={"2rem"} />
             </i>
-            <input id="icon_prefix" type="text" className="validate" />
+            <input
+              id="icon_prefix"
+              value={search}
+              onChange={(e) => searchUser(e.target.value)}
+              type="text"
+              className="validate"
+            />
             <label htmlFor="icon_prefix">Search...</label>
           </div>
           <br />
           <ul className="collection">
-            <li className="collection-item avatar" style={{ display: "block" }}>
-              <img
-                src="https://res.cloudinary.com/ddlhqjoih/image/upload/v1655353222/samples/usernophoto_bcagpc.png"
-                alt="photos"
-                className="circle"
-              />
-              <span className="title">Title</span>
-            </li>
-            <li className="collection-item avatar" style={{ display: "block" }}>
-              <img
-                src="https://res.cloudinary.com/ddlhqjoih/image/upload/v1655353222/samples/usernophoto_bcagpc.png"
-                alt="photos"
-                className="circle"
-              />
-              <span className="title">Title</span>
-            </li>
+            {userFinded.map((user) => (
+              <Link
+                to={
+                  user._id !== state._id ? `/profile/${user._id}` : "/profile"
+                }
+                key={user._id}
+              >
+                {" "}
+                <li
+                  onClick={() =>
+                    M.Modal.getInstance(searchPanel.current).close()
+                  }
+                  className="collection-item avatar"
+                  style={{ display: "block" }}
+                >
+                  <img src={user.pic} alt={user.email} className="circle" />
+                  <span className="title">
+                    {" "}
+                    {user.name} <br /> {user.email}
+                  </span>
+                </li>
+              </Link>
+            ))}
           </ul>
         </div>
         <div className="modal-footer">
