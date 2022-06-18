@@ -78,3 +78,5 @@
   Profileda rasmlarni uzgartirish va api orqali ma'lumotlar bazasidan ham o'zgarishi!.
 - 39 qadam:
   Profileni taxrirlash funksiyasi qo'shildi !.
+- 40 qadam:
+  User qidiruvning fronend qismini qilib bo'ldik!.
